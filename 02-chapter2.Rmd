@@ -1,0 +1,21 @@
+---
+knit: "bookdown::render_book"
+---
+
+# Results A
+
+Here is a test of including a figure with RMarkdown:
+
+
+```{r heatmap, echo=F, fig.cap='(ref:heatmap)', fig.scap="Relative abundance heatmap of snow algae community composition", out.width = "90%", fig.align = 'center'}
+
+knitr::include_graphics("figures/amplicon_morph_heatmap/community_ggplot_polished_2.png")
+
+```
+(ref:heatmap) Relative abundance heatmap of snow algae community composition using cell morphology, 18S, and *rbc*L. Samples on the x-axis are arranged from low to high elevation. Taxonomic designations for *rbc*L are based on *de novo* OTU clustering, while taxonomic assignments for 18S are reference-based. Samples lacking data for a particular dataset are shown as blank (e.g. G1.4 18S).
+
+
+I can cross-reference, (Figure \@ref(fig:heatmap)), or even cross-reference files in the supplemental data (Table \@ref(tab:supp1)).
+
+
+

@@ -1,0 +1,41 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+
+
+# R
+*.Rproj
+*.Rda
+
+# data
+*.ascii
+*.csv
+
+# image
+*.png
+*.jpg
+*.jpeg
+*.JPG
+*.JPEG
+*.svg
+*.pdf
+
+# bib
+*.bib
+*.csl
+
+# office
+*.ods
+*.docx
+
+# bio
+*.fasta
+
+# misc
+*.html
+*.ps
+*.log
+*.gz
+*.txt

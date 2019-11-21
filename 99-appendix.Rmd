@@ -1,0 +1,57 @@
+---
+knit: "bookdown::render_book"
+
+# Appendices come after the bibliography and should be in the order 
+# that they are referred to in the text.
+# 
+# If you include figures, etc. in an appendix, be sure to use
+# 
+#     \\caption[]{...}
+# 
+# to make sure they are not listed in the List of Figures.
+
+# Before rendering the final version, you need to wrap the appendix 
+# with:
+#     \\begin{appendices}
+#     ...
+#     \\end{appendices}
+---
+
+```{r setup, include=FALSE}
+library(here)
+library(tidyverse)
+library(kableExtra)
+library(knitr)
+library(sessioninfo)
+
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, include=FALSE}
+field_tbl <- read_csv(here("data/amplicon_2019/02_tidy/tidied_field.csv"))
+```
+
+
+`r if(knitr:::is_latex_output()) '\\appendix'`
+
+\setlength{\parindent}{0in}
+\setlength{\leftskip}{0in}
+
+
+# Supplemental Data File
+
+here is some supplemental data, for example. 
+
+Table: (\#tab:supp1) Field site data for 2018 samples used in amplicon analysis. 
+
+```{r supp1, echo=FALSE}
+field_tbl %>% 
+  filter(have_seq==T) %>% 
+  mutate(notes = if_else(sample_id %in% c("pan18.ro","bre18.rd"), "collected from rock",NA_character_)) %>% 
+  select(alias, date, elev_m, lat, lon,color_snow, habitat, notes) %>% 
+  arrange(date) %>% 
+  dplyr::rename_all(str_to_title) %>% 
+  kable(booktabs = T,
+        format="markdown")
+```
+

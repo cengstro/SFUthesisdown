@@ -1,0 +1,43 @@
+<!---
+
+BACK MATTER 
+
+This marks the start of the back matter, which includes:
+- References (in this document)
+- Appendices (in a separate document)
+
+--->
+
+
+\backmatter
+
+
+# Bibliography {-}
+
+<!---
+
+\addtoToC{Bibliography}
+\bibliographystyle{plain}
+\bibliography{references}
+
+---> 
+
+
+<!-- To remove the indentation of the first entry. -->
+
+\noindent
+
+
+<!---
+To create a hanging indent and spacing between entries.
+These three lines may need to be removed for styles that don't 
+require the hanging indent.
+--->
+
+\setlength{\parindent}{-0.50in}
+\setlength{\leftskip}{0.50in}
+\setlength{\parskip}{8pt}
+
+
+<div id="refs"></div>
+

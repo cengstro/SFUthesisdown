@@ -1,0 +1,74 @@
+---
+title: |
+  Snow algae are neat
+author: "Casey Engstrom"
+previousdegrees: |
+  B.A., Middlebury College, VT
+degree: "Doctor of Philosophy"
+discipline: "Molecular Biology and Biochemistry"
+department: "Department of Molecular Biology and Biochemistry"
+faculty: "Faculty of Science"
+year: "2023"
+semester: "May 2023"
+defencedate: "April 3rd, 2023"
+keywords: |
+  snow algae; 
+  metagenomics; 
+  metatranscriptomics;
+  life cycle;
+  microbiome
+
+# Committee
+chair:
+  name: "Chair"
+  title: |
+    Professor
+members:
+  - name: "Lynne M. Quarmby"
+    title: |
+      Senior Supervisor \
+      Professor
+  - name: "Fiona Brinkman"
+    title: |
+      Supervisor \
+      Professor
+  - name: "David Hik"
+    title: |
+      Supervisor \
+      Professor \
+      Department of Biology 
+
+  - name: "Internal examiner"
+    title: |
+      Internal Examiner \
+      Professor
+  - name: "Name"
+    title: |
+      External Examiner \
+      Professor \
+      Department of Stuff \
+      Other University
+
+knit: "bookdown::render_book"
+output: 
+  thesisdown::thesis_pdf:
+    latex_engine: xelatex
+    fig_caption: yes
+abstract: |
+  `r paste(readLines("frontmatter/abstract.md"), collapse = '\n  ')`
+acknowledgements: |
+  `r paste(readLines("frontmatter/acknowledgements.md"), collapse = '\n  ')`
+dedication: |
+  `r paste(readLines("frontmatter/dedication.md"), collapse = '\n  ')`
+glossary: |
+  `r paste(readLines("frontmatter/glossary.md"), collapse = '\n  ')`
+preface: |
+  `r paste(readLines("frontmatter/preface.md"), collapse = '\n  ')` 
+
+bibliography: "etc/thesis.bib"
+csl: "etc/nature.csl"
+lot: true
+lof: true
+space_between_paragraphs: true
+line_spacing: 1.5
+---
