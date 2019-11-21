@@ -3,7 +3,9 @@
 .RData
 .Ruserdata
 
-
+# thesis specific
+_book/*
+_bookdown_files/*
 
 # R
 *.Rproj
@@ -39,3 +41,4 @@
 *.log
 *.gz
 *.txt
+*.cls
