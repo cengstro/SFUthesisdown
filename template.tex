@@ -1,0 +1,346 @@
+%   DOCUMENT CLASS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Use the `sfuthesis` class to format your thesis. If your program does not
+%   require a thesis defence, use the class option `undefended` like so:
+%
+%     \documentclass[undefended]{sfuthesis}
+%
+%   To generate a signature page for your defence, use the `sfuapproval` class
+%   instead, by replacing the below line with
+%
+%     \documentclass{sfuapproval}
+%
+%   For more information about thesis formatting requirements, go to
+%
+%     http://www.lib.sfu.ca/help/publish/thesis
+%
+%   or ask a thesis advisor at the SFU Research Commons.
+%
+
+\documentclass{sfuthesis}
+
+
+
+%   DOCUMENT METADATA  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{$title$}
+\thesistype{Thesis}
+\author{$author$}
+\previousdegrees{$previousdegrees$}
+\degree{$degree$}
+\discipline{$discipline$}
+\department{$department$}
+\faculty{$faculty$}
+\copyrightyear{$year$}
+\semester{$semester$}
+\date{$defencedate$}
+
+\keywords{$keywords$}
+
+\committee{%
+	\chair{$chair.name$}{$chair.title$}
+	$for(members)$
+	\member{$members.name$}{$members.title$}
+  $endfor$
+}
+
+
+
+%   PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Add any packages you need for your thesis here.
+%   You don't need to call the following packages, which are already called in
+%   the sfuthesis class file:
+%
+%   - appendix
+%   - etoolbox
+%   - fontenc
+%   - geometry
+%   - lmodern
+%   - nowidow
+%   - setspace
+%   - tocloft
+%
+%   If you call one of the above packages (or one of their dependencies) with
+%   options, you may get a "Option clash" LaTeX error. If you get this error,
+%   you can fix it by removing your copy of \usepackage and passing the options
+%   you need by adding
+%
+%       \PassOptionsToPackage{<options>}{<package>}
+%
+%   before \documentclass{sfuthesis}.
+%
+%   The following packages are a few suggestions you might find useful.
+%
+%   (1) amsmath and amssymb are essential if you have math in your thesis;
+%       they provide useful commands like ``blackboard bold'' symbols and
+%       environments for aligning equations.
+%   (2) amsthm includes allows you to easily change the style and numbering of
+%       theorems. It also provides an environment for proofs.
+%   (3) graphicx allows you to add images with \includegraphics{filename}.
+%   (4) hyperref turns your citations and cross-references into clickable
+%       links, and adds metadata to the compiled PDF.
+%   (5) pdfpages lets you import pages of external PDFs using the command
+%       \includepdf{filename}. You will need to do this if your research
+%       requires an Ethics Statement.
+%
+
+\usepackage{amsmath}                            % (1)
+\usepackage{amssymb}                            % (1)
+\usepackage{amsthm}                             % (2)
+\usepackage{graphicx}                           % (3)
+\usepackage[pdfborder={0 0 0}]{hyperref}        % (4)
+\usepackage{pdfpages}                           % (5)
+
+
+
+
+%   OTHER CUSTOMIZATIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Add any packages you need for your thesis here. We've started you off with
+%   a few suggestions.
+%
+%   (1) Use a single word space between sentences. If you disable this, you
+%       will have to manually control spacing around abbreviations.
+%   (2) Correct the capitalization of "Chapter" and "Section" if you use the
+%       \autoref macro from the `hyperref` package.
+%   (3) The LaTeX thesis template defaults to one-and-a-half line spacing. If
+%       your supervisor prefers double-spacing, you can redefine the
+%       \defaultspacing command.
+%
+
+\frenchspacing                                               % (1)
+\renewcommand*{\chapterautorefname}{Chapter}                 % (2)
+\renewcommand*{\sectionautorefname}{Section}                 % (2)
+\renewcommand*{\subsectionautorefname}{Section}              % (2)
+\renewcommand*{\contentsname}{Table of Contents}             % (2)
+\renewcommand{\defaultspacing}{\setstretch{$line_spacing$}}  % (3)
+
+\setlength{\cfttabindent}{0in}
+\setlength{\cftfigindent}{0in}
+
+\renewcommand{\topfraction}{.85}
+\renewcommand{\bottomfraction}{.7}
+\renewcommand{\textfraction}{.15}
+\renewcommand{\floatpagefraction}{.66}
+\renewcommand{\dbltopfraction}{.66}
+\renewcommand{\dblfloatpagefraction}{.66}
+\setcounter{topnumber}{9}
+\setcounter{bottomnumber}{9}
+\setcounter{totalnumber}{20}
+\setcounter{dbltopnumber}{9}
+
+
+
+
+%   SFUTHESISDOWN CUSTOMIZATIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Package imports that are redundant with what was already included in the
+%   SFU template were not duplicated below.
+%
+
+% \usepackage{latexsym}
+% \usepackage{setspace}
+\usepackage{longtable,booktabs}
+\usepackage{rotating}
+\usepackage{tabu}
+% \usepackage[hyphens]{url}
+% \usepackage{lmodern}
+
+\usepackage{float}
+\floatplacement{figure}{H}
+
+% Use same font for URLs (instead of monospace font)
+\usepackage{url}
+\urlstyle{same}
+
+% Remove indent in footnotes
+\usepackage[hang,flushmargin]{footmisc}
+
+% Set Arial as font
+%\usepackage{helvet} % need to change this to actual arial for final product
+%\renewcommand{\familydefault}{\sfdefault}
+\usepackage{fontspec} 
+\setmainfont{Arial}
+% this font not installed in ubuntu, use sudo apt-get install ttf-mscorefonts-installer, then sudo fc-cache and it worked for me ---CE
+
+% Reduce top margin for title pages
+\usepackage{etoolbox}
+\makeatletter
+% Space from top of page to CHAPTER X
+\patchcmd{\@makechapterhead}{50\p@}{\chapheadtopskip}{}{}   % Patch \chapter
+\patchcmd{\@makeschapterhead}{50\p@}{\chapheadtopskip}{}{}  % Patch \chapter*
+% Space between CHAPTER X and CHAPTER TITLE
+\patchcmd{\@makechapterhead}{20\p@}{\chapheadsep}{}{}   % Patch \chapter
+% Space between CHAPTER TITLE and text
+\patchcmd{\@makechapterhead}{40\p@}{\chapheadbelowskip}{}{}   % Patch \chapter
+\patchcmd{\@makeschapterhead}{40\p@}{\chapheadbelowskip}{}{}  % Patch \chapter*
+\makeatother
+
+% Space from top of page to CHAPTER X
+\newlength{\chapheadtopskip}\setlength{\chapheadtopskip}{-20pt}
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftbeforeloftitleskip}{0pt}
+\setlength{\cftbeforelottitleskip}{0pt}
+% Space between CHAPTER X and CHAPTER TITLE
+\newlength{\chapheadsep}\setlength{\chapheadsep}{20pt}
+% Space between CHAPTER TITLE and text
+\newlength{\chapheadbelowskip}\setlength{\chapheadbelowskip}{20pt}
+\setlength{\cftaftertoctitleskip}{20pt}
+\setlength{\cftafterloftitleskip}{20pt}
+\setlength{\cftafterlottitleskip}{20pt}
+
+
+% Tweak caption format
+\usepackage{caption}
+\captionsetup{font=small}
+\captionsetup{justification=raggedright,singlelinecheck=false}
+\captionsetup{labelfont=bf}
+% \captionsetup{width=5in}
+
+% Syntax highlighting #22
+$if(highlighting-macros)$
+  $highlighting-macros$
+$endif$
+
+% \setlength{\parskip}{0pt}
+
+% Use ref for internal links
+% \renewcommand{\hyperref}[2][???]{\autoref{#1}}
+
+%%% Copied from knitr
+%% maxwidth is the original width if it's less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+$if(space_between_paragraphs)$
+  \usepackage[parfill,indent]{parskip}
+  %\setlength{\parskip}{\baselineskip}
+$endif$
+
+
+% \providecommand{\tightlist}{%
+%   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+$for(header-includes)$
+	$header-includes$
+$endfor$
+
+
+
+
+%   FRONTMATTER  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Title page, committee page, copyright declaration, abstract,
+%   dedication, acknowledgements, table of contents, etc.
+%
+
+
+\begin{document}
+
+
+% Some formatting
+\raggedright
+
+
+\frontmatter
+
+
+$if(title)$
+  \maketitle
+$endif$
+
+
+\makecommittee{}
+
+
+$if(ethics_statement)$
+	\addtoToC{Ethics Statement}%
+	\includepdf[pagecommand={\thispagestyle{plain}}]{etc/ethics_statement.pdf}%
+	\clearpage
+$endif$
+
+
+$if(abstract)$
+  \begin{abstract}
+    $abstract$
+  \end{abstract}
+$endif$
+
+% 
+% $if(dedication)$
+%   \begin{dedication}
+%     % \begin{center}
+%       $dedication$
+%     % \end{center}
+%   \end{dedication}
+% $endif$
+
+
+$if(acknowledgements)$
+  \begin{acknowledgements}
+    $acknowledgements$
+  \end{acknowledgements}
+$endif$
+
+
+$if(toc)$
+	\addtoToC{Table of Contents}%
+	\hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
+	\setcounter{tocdepth}{$toc-depth$}
+	\tableofcontents
+	\clearpage
+$endif$
+
+
+$if(lot)$
+	\addtoToC{List of Tables}%
+	\listoftables
+	\clearpage
+$endif$
+
+
+$if(lof)$
+	\addtoToC{List of Figures}%
+	\listoffigures
+	\clearpage
+$endif$
+
+
+$if(glossary)$
+  \begin{glossary}
+    $glossary$
+  \end{glossary}
+$endif$
+
+
+$if(preface)$
+  \begin{preface}
+    $preface$
+  \end{preface}
+$endif$
+
+
+
+
+%   MAIN MATTER  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Start writing your thesis --- or start \include ing chapters --- here.
+%
+
+\mainmatter
+
+
+$body$
+
+
+\end{document}
