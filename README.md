@@ -1,2 +1,2 @@
-# thesis
-My SFU thesis
+# My SFU thesisdown template
+This is a fork with minor changes for Ubuntu of https://github.com/BrunoGrandePhD/thesisdown, (originally forked from https://github.com/ismayc/thesisdown), using the SFU thesis template https://www.lib.sfu.ca/help/publish/thesis/templates#latex-template.
